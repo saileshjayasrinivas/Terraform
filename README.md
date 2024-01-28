@@ -89,7 +89,6 @@ Example URL: http://loki-read.eu-logging.svc.cluster.local:3100
 
 To access Grafana globally, obtain the LoadBalancer URL, and either associate it with a DNS entry or configure an Ingress that is accessible under whitelisted or private networks.
 
-Files will be provided In repository 
 
 
 
