@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: loki-ingress-new1
+  namespace: logging-new
+  annotations:
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    kubernetes.io/ingress.class: alb
+spec:
+   backend:
+    serviceName: loki-read
+    servicePort: 3100
+   rules:
+    - host: "lokiwrite.42gears.com"
+      http:
+        paths:
+        - path: 
+          backend:
+            serviceName: loki-write
+            servicePort: 3100
+    - host: "lokiread.42gears.com"
+      http:
+        paths:
+        - path: 
+          backend: 
+            serviceName: loki-read
+            servicePort: 3100
+    
+    
